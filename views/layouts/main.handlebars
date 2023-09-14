@@ -4,41 +4,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fund My Project!</title>
+  <title>Tech blog</title>
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" 
+        rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" 
+        crossorigin="anonymous">
 </head>
 
 <body>
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">Fund My Project!</a>
-      </h1>
+      <div class="mt-5">Welcome!</div>
+      
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
+        <a href="/profile">Profile</a> |
+        <button class="no-button" id="logout">Logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <a href="/login">Login</a>
         {{/if}}
       </nav>
     </header>
+
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
-    <footer>
-      
-    </footer>
   </div>
 
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+          crossorigin="anonymous">
+  </script>
 </body>
 
 </html>
