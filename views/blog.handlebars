@@ -1,14 +1,38 @@
-<div class="text-center">
-  <h2>{{name}}</h2>
-  <p>{{{get_emoji}}}</p>
-  <p>{{description}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
-  <p>
-    <span for="img" aria-label="money">💲</span>
-    <span class="dollar-amount">{{format_amount needed_funding}}</span>
-    needed
-  </p>
-  <p>
-    <button class="btn btn-primary">Fund this Project!</button>
-  </p>
+<div class="row mb-4">
+  <div class="col-md-12">
+    <h2 class="mb-3">
+      <a href="/post/{{blog.id}}">{{blog.title}}</a>
+    </h2>
+    <p>{{blog.content}}</p>
+    <p>Written by {{blog.user.name}} on {{format_date blog.date_created}}</p>
+
+    {{#if logged_in}}
+    <div class="mt-4">
+      <h4 class="mb-2">Add comment:</h4>
+      <form class="form">
+        <input type="hidden" name="blog-id" value="{{blog.id}}"/>
+
+        <div class="form-group">
+          <textarea name="commentText" id="commentText" rows="2"></textarea>
+        </div>
+
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </div>
+    {{/if}}
+
+    <div class="mt-4">
+      <h3>Comments:</h3>
+      {{#each blog.comments as |comment|}}
+      <div class="mb-3">
+        <p>{{comment.content}}</p>
+        <p class="mb-0">Written by {{comment.user.name}} on {{format_date comment.date_created}}</p>
+      </div>
+      {{/each}}
+    </div>
+  </div>
 </div>
+
+{{#if logged_in}}
+<script src="/js/comment.js"></script>
+{{/if}}
